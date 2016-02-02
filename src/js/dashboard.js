@@ -270,17 +270,17 @@ anychart.onDocumentReady(function () {
   forecastData['length'] = timeLine.getValue();
   instrumentsTable = drawTable('table-container');
 
-  $.getJSON("./src/data/financialQuotes.json", function (parsed_data) {
+  $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/financialQuotes.json?token=ABGpE3Pu6iPO3S6-C1IWBt0-svudkhmgks5WubsDwA%3D%3D", function (parsed_data) {
     stockData = drawStockChart('stock-container', parsed_data);
   });
-  $.getJSON("./src/data/StocksViaBonds.json", function (parsed_data) {
+  $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/StocksViaBonds.json?token=ABGpE1Rhax2cZ3f8PXOcYd6E1-H44Gnkks5Wubq0wA%3D%3D", function (parsed_data) {
     donutData['initial_data'] = parsed_data;
     updateDonutListeners(donutData, instrumentsTable);
     updateDonutData(parsed_data, 5, 5);
     forecastData['data'] = donutData['data'];
     updateForecastData(forecastData);
     updateTableData(instrumentsTable, donutData['data']);
-    $.getJSON("./src/data/historical.json", function (parsed_data) {
+    $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/historical.json?token=ABGpE0WdIKVgNN01lo11wWD1xbwyuxp1ks5WubtJwA%3D%3D", function (parsed_data) {
       stockData['historical'] = parsed_data;
       stockData['mainData'] = calculateDataForStock(donutData['data'], parsed_data);
       changeStockChart(stockData);
@@ -294,19 +294,23 @@ anychart.onDocumentReady(function () {
 
   $('.stock_quotes input[type=checkbox]').on('click', function(){
     if ($(this).attr('id') == 'log'){
+      var plot = stockData['stock'].plot();
       if ($(this).prop('checked')) {
-        stockData['stock'].plot().yScale('log');
-        //console.log('log', stockData['stock'].plot())
+        plot.yScale('log');
       }
       else {
-        stockData['stock'].plot().yScale('linear');
-        //console.log('linear', stockData['stock'].plot())
+        plot.yScale('linear');
       }
+      var seriesCount = plot.getSeriesCount();
+      for (var i = 0; i < seriesCount; i++) {
+        plot.getSeriesAt(i).yScale(plot.yScale());
+      }
+      plot.yAxis(0).scale(plot.yScale());
+      plot.yAxis(1).scale(plot.yScale());
     } else {
       var series = stockData[$(this).attr('id')];
       series.enabled($(this).prop('checked'));
     }
-
   });
 });
 
@@ -343,13 +347,15 @@ function toRadians(angleDegrees) {
 
 // helper function to calculate price of our portfolio based on historical prices for each instrument
 function calculateDataForStock(proportion_data, historical_data){
-    var result = historical_data[proportion_data[0]['ticker']];
-    for (var i = 0; i < result.length; i++){
-        var sum = 0;
-        for (var j = 0; j < proportion_data.length; j++){
-            sum = sum + (proportion_data[j]['amount'] * historical_data[proportion_data[j]['ticker']][i]['value'])
-        }
-        result[i]['value'] = sum;
-    }
-    return result
+  var result = [];
+  var hist = historical_data[proportion_data[0]['ticker']];
+
+  for (var i = 0; i < hist.length; i++){
+      var sum = 0;
+      for (var j = 0; j < proportion_data.length; j++){
+          sum = sum + (parseFloat(proportion_data[j]['amount']) * parseFloat(historical_data[proportion_data[j]['ticker']][i]['value']))
+      }
+      result.push({'date': hist[i].date, 'value': sum});
+  }
+  return result;
 }
