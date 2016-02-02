@@ -1,2 +1,4 @@
 .idea
 .DS_Store
+src/data/historical
+src/js/utils.js

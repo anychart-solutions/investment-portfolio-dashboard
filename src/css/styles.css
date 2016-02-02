@@ -47,7 +47,9 @@ h3.title {
     margin: 0 0 10px 0;
     text-align: center;
 }
-
+.relative{
+    position: relative;
+}
 .navbar-brand {
     position: relative;
     float: left;
@@ -184,64 +186,45 @@ ul.list-unstyled ul {
     padding: 20px 20px 0;
     max-width: 1120px;
 }
-#tabsMenu>li>a{
+.tabsMenu>li>a{
     font-size: 18px;
     font-weight: 500;
 }
 #tabsContent {
-    padding: 20px 0 0 0;
+    padding: 40px 0 0 0;
 }
 #tabsContent h3{
     text-align: center;
     font-size: 18px;
     margin: 0 0 10px 0;
 }
-.progress-center{
-    position: relative;
-    max-width: 300px;
-    margin: 0 auto;
+.tab-dependent{
+    display: none;
 }
-.progress {
-     margin-bottom: 0;
+.tab-dependent.visible-tab1{
+    display: block;
 }
-.progress-bar {
-    background: #FCFCFC;
-    border: 1px solid #d1d1d1;
-    box-shadow: none;
-}
-/*.progress-bar-stocks {*/
-    /*background: #6fc0fe;*/
-/*}*/
-/*.progress-bar-bonds {*/
-    /*background: #ffa760;*/
-/*}*/
-.progress .control {
-    position: absolute;
-    left: 50%;
-    margin-left: -11px;
-    top: -5px;
-    height: 20px;
-}
-.progress .control .badge {
-    background: #eeeeee;
-    color: #222222;
-    padding: 0 5px;
-    vertical-align: top;
-    height: 30px;
-    line-height: 30px;
-    cursor: pointer;
-    text-shadow: rgb(255, 255, 255) 0 1px 0;
-    border: 1px solid #d1d1d1;
-    border-radius: 4px;
-}
-
 .chart-container{
     width: 100%;
-    margin: 20px 0;
+    margin: 0;
     height: 400px;
     position: relative;
 }
-
+.stock_quotes{
+    width: 90px;
+    position: absolute;
+    height: 100px;
+    top: 0;
+    left: 15px;
+    z-index: 1000;
+}
+.chart-container.with-quotes{
+    width: 100%;
+    margin: 0 -90px 0 0;
+    padding: 0 0 0 90px;
+    height: 400px;
+    position: relative;
+}
 .footer-panel {
     z-index: 10;
     width: 100%;
@@ -269,7 +252,12 @@ ul.list-unstyled ul {
 .footer-panel .footer a {
     text-decoration: underline;
 }
-#proportionsSlider .slider-selection, #timeLineSlider .slider-selection{
+#proportionsSlider .slider-selection{
+    background: transparent;
+     -webkit-box-shadow: none;
+     box-shadow: none
+}
+#timeLineSlider .slider-selection{
     background: transparent;
      -webkit-box-shadow: none;
      box-shadow: none
