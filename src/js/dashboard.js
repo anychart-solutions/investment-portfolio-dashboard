@@ -1,4 +1,4 @@
-var the_sum = 100000;
+var the_sum = 50000;
 var groupsColors = ['#fb8c00', '#1976d2'];
 
 function drawDonutChart(container_id) {
@@ -154,41 +154,43 @@ function highLightRowInTable(indexes, table, color){
   }
 }
 
-function drawStockChart(container_id, data){
+function drawStockChart(container_id){
   var stock = anychart.stock();
   var plot = stock.plot();
   plot.yAxis(1).orientation('right');
-  //plot.yScale('log');
   stock.padding(0, 80, 0, 80);
   stock.container(container_id);
 
   var mainTable = anychart.data.table('date');
   var mainMapping = mainTable.mapAs({value: {column: 'value', type: 'close'}});
-  plot.line(mainMapping).name('Portfolio').stroke('2 #64b5f6');
+  plot.line(mainMapping).name('Portfolio').stroke('2 #1976d2');
 
   var SP500Table = anychart.data.table('date');
   var SP500Mapping = SP500Table.mapAs({value: {column: 'value', type: 'close'}});
-  var SP500Series = plot.line(SP500Mapping).name('S&P 500').stroke('1.5 #ef6c00');
-  SP500Table.addData(data['S&P 500']);
+  var SP500Series = plot.line(SP500Mapping).name('S&P 500').stroke('1 #ef6c00');
 
   var DowTable = anychart.data.table('date');
   var DowMapping = DowTable.mapAs({value: {column: 'value', type: 'close'}});
-  var DowSeries = plot.line(DowMapping).name('Dow').stroke('1.5 #ffa000');
-  DowTable.addData(data['Dow']);
+  var DowSeries = plot.line(DowMapping).name('Dow').stroke('1 #ffa000');
 
   var NasdaqTable = anychart.data.table('date');
   var NasdaqMapping = NasdaqTable.mapAs({value: {column: 'value', type: 'close'}});
-  var NasdaqSeries = plot.line(NasdaqMapping).name('NASDAQ').stroke('1.5 #ffd54f');
-  NasdaqTable.addData(data['NASDAQ']);
+  var NasdaqSeries = plot.line(NasdaqMapping).name('NASDAQ').stroke('1 #ffd54f');
 
   stock.scroller().line(mainMapping);
   stock.draw();
-  return {'stock': stock, 'mainTable': mainTable, 'SP500': SP500Series, 'Dow': DowSeries, 'NASDAQ': NasdaqSeries};
+  return {'stock': stock, 'mainTable': mainTable,
+    'SP500Table': SP500Table, 'DowTable': DowTable, 'NasdaqTable': NasdaqTable,
+    'SP500': SP500Series, 'Dow': DowSeries, 'NASDAQ': NasdaqSeries};
 }
 
 function changeStockChart(stockData){
   stockData['mainTable'].remove();
+  var initial_sum = stockData['mainData'][stockData['mainData'].length - 1].value;
   stockData['mainTable'].addData(stockData['mainData']);
+  stockData['SP500Table'].addData(calculateIndexPrices(stockData['indexesData']['S&P 500'], initial_sum));
+  stockData['DowTable'].addData(calculateIndexPrices(stockData['indexesData']['Dow'], initial_sum));
+  stockData['NasdaqTable'].addData(calculateIndexPrices(stockData['indexesData']['NASDAQ'], initial_sum));
 }
 
 function drawHoverArc(point, chart, data, path, needClear){
@@ -269,10 +271,11 @@ anychart.onDocumentReady(function () {
   forecastData = drawForecastChart('forecast-chart-container');
   forecastData['length'] = timeLine.getValue();
   instrumentsTable = drawTable('table-container');
-
   $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/financialQuotes.json?token=ABGpE3Pu6iPO3S6-C1IWBt0-svudkhmgks5WubsDwA%3D%3D", function (parsed_data) {
-    stockData = drawStockChart('stock-container', parsed_data);
+    stockData = drawStockChart('stock-container');
+    stockData['indexesData'] = parsed_data
   });
+
   $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/StocksViaBonds.json?token=ABGpE1Rhax2cZ3f8PXOcYd6E1-H44Gnkks5Wubq0wA%3D%3D", function (parsed_data) {
     donutData['initial_data'] = parsed_data;
     updateDonutListeners(donutData, instrumentsTable);
@@ -358,4 +361,14 @@ function calculateDataForStock(proportion_data, historical_data){
       result.push({'date': hist[i].date, 'value': sum});
   }
   return result;
+}
+
+// helper function to recalculate indexes
+function calculateIndexPrices(data, initial_sum){
+  var amount = parseFloat(initial_sum/data[data.length-1].value).toFixed(2);
+  var result = [];
+  for (var i = 0; i < data.length; i++){
+      result.push({'date': data[i].date, 'value': data[i].value * amount});
+  }
+  return result
 }
