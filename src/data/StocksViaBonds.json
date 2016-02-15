@@ -1,7 +1,7 @@
 {
   "stocks":[
-    {"name": "Vanguard Total Stock Market ETF", "ticker": "VTI", "value": 101.53, "coefficient": 4.63, "risks": 12},
-    {"name": "Schwab US Broad Market ETF", "ticker": "SCHB", "value": 47.67, "coefficient": 4.67, "risks": 15},
+    {"name": "Vanguard Total Stock Market ETF", "ticker": "VTI", "value": 101.53, "coefficient": 4.63, "risks": 4},
+    {"name": "Schwab US Broad Market ETF", "ticker": "SCHB", "value": 47.67, "coefficient": 4.67, "risks": 19},
     {"name": "Vanguard Value ETF", "ticker": "VTV", "value": 78.36, "coefficient": 6.04, "risks": 13},
     {"name": "iShares S&P 500 Value", "ticker": "IVE", "value": 85.91, "coefficient": 4.91, "risks": 19},
     {"name": "Vanguard Mid-Cap Value ETF", "ticker": "VOE", "value": 86.47, "coefficient": 0.56, "risks": 22},
@@ -9,18 +9,18 @@
     {"name": "Vanguard FTSE Developed Markets ETF", "ticker": "VEA", "value": 36.65, "coefficient": 1.44, "risks": 15},
     {"name": "Vanguard FTSE Emerging Markets ETF", "ticker": "VWO", "value": 34.01, "coefficient": -2.67, "risks": 17},
     {"name": "FPA Crescent", "ticker": "FPACX", "value": 32.47, "coefficient": 1.78, "risks": 13},
-    {"name": "Wells Fargo & Company", "ticker": "WFC", "value": 52.82, "coefficient": 5.73, "risks": 10}
+    {"name": "Wells Fargo & Company", "ticker": "WFC", "value": 52.82, "coefficient": 5.73, "risks": 3}
   ],
   "bonds":[
     {"name": "iShares National AMT-Free Muni Bond", "ticker": "MUB", "value": 108.18, "coefficient": 1.70, "risks": 2},
     {"name": "iShares iBoxx $ Invst Grade Crp Bond", "ticker": "LQD", "value": 114.64, "coefficient": -0.26, "risks": 1},
-    {"name": "Vanguard Total International Bond ETF", "ticker": "BNDX", "value": 52.66, "coefficient": 0.34, "risks": 3},
+    {"name": "Vanguard Total International Bond ETF", "ticker": "BNDX", "value": 52.66, "coefficient": 0.34, "risks": 8},
     {"name": "Vanguard Emerging Markets Govt Bd ETF", "ticker": "VWOB", "value": 75.15, "coefficient": -1.07, "risks": 2},
     {"name": "iShares Short Treasury Bond", "ticker": "SHV", "value": 110.24, "coefficient": -0.06, "risks": 1},
     {"name": "Vanguard Short-Term Infl-Prot Secs ETF", "ticker": "VTIP", "value": 48.21, "coefficient": -0.24, "risks": 3},
-    {"name": "Colorado BondShares A Tax-Exempt", "ticker": "HICOX", "value": 9.13, "coefficient": -0.10, "risks": 1},
+    {"name": "Colorado BondShares A Tax-Exempt", "ticker": "HICOX", "value": 9.13, "coefficient": -0.10, "risks": 5},
     {"name": "Ave Maria Bond", "ticker": "AVEFX", "value": 11.00, "coefficient": 1.09, "risks": 4},
-    {"name": "Metropolitan West Strategic Income M", "ticker": "MWSTX", "value": 8.19, "coefficient": -1.09, "risks": 3},
+    {"name": "Metropolitan West Strategic Income M", "ticker": "MWSTX", "value": 8.19, "coefficient": -1.09, "risks": 9},
     {"name": "DoubleLine Total Return Bond N", "ticker": "DLTNX", "value": 10.88, "coefficient": -0.73, "risks": 2}
   ]
 }

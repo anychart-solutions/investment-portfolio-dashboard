@@ -200,29 +200,42 @@ function drawHoverArc(point, chart, data, path, needClear){
 }
 
 function getDataInProportion(data, proportion){
-  var sum_1 = (the_sum * proportion[0][0])/(proportion[0][0] + proportion[1][0]);
-  proportion[0][2] = sum_1/proportion[0][0];
-  proportion[1][2] = (the_sum - sum_1)/proportion[1][0];
+  var sumProp = (proportion[0][0] + proportion[1][0]);
+  proportion[0][2] = the_sum * proportion[0][0] / sumProp;
+  proportion[1][2] = the_sum * proportion[1][0] / sumProp;
+
+  var consts = [[0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10], [0, 1, 2, 2, 3, 5, 6, 6, 7, 8, 10]];
+
   var result = {"data": [], "proportion": proportion};
-  for (var j = 0; j < proportion.length; j++) {
-    var group_palette = anychart.palettes.distinctColors(anychart.color.singleHueProgression(groupsColors[j], proportion[j][0] + 1));
-    for (var i = 0; i < proportion[j][0]; i++) {
+  for (var group = 0; group < proportion.length; group++) {
+    var group_palette = anychart.palettes.distinctColors(anychart.color.singleHueProgression(groupsColors[group], proportion[group][0] + 1));
+    var groupName = proportion[group][1];
+    var dataForGroup = data[groupName];
+    var groupItemsCount = consts[group][proportion[group][0]];
+    var totalRisk = 0;
+    var tickerIndex;
+    for (tickerIndex = 0; tickerIndex < groupItemsCount; tickerIndex++) {
+      totalRisk += 1 / dataForGroup[tickerIndex]['risks'];
+    }
+    for (tickerIndex = 0; tickerIndex < groupItemsCount; tickerIndex++) {
+      var dataPoint = dataForGroup[tickerIndex];
       var point = {};
-      point['price'] = data[proportion[j][1]][i]['value'];
-      point['amount'] = parseInt(proportion[j][2]/point['price']);
-      point['value'] = parseFloat((point['amount'] * point['price']).toFixed(2));
-      point['percent'] = parseFloat((point['value'] * 100 / the_sum).toFixed(2));
-      point['coefficient'] = data[proportion[j][1]][i]['coefficient'];
-      point['ticker'] = data[proportion[j][1]][i]['ticker'];
-      point['group'] = proportion[j][1];
-      point['name'] = data[proportion[j][1]][i]['name'];
-      point['fill'] = group_palette.colorAt(proportion[j][0] - i);
-      point['hoverFill'] = anychart.color.lighten(anychart.color.lighten(group_palette.colorAt(proportion[j][0] - i)));
+      point['group'] = groupName;
+      point['price'] = dataPoint['value'];
+      point['coefficient'] = dataPoint['coefficient'];
+      point['ticker'] = dataPoint['ticker'];
+      point['name'] = dataPoint['name'];
+      point['fill'] = group_palette.colorAt(proportion[group][0] - tickerIndex);
+      point['hoverFill'] = anychart.color.lighten(anychart.color.lighten(group_palette.colorAt(proportion[group][0] - tickerIndex)));
       point['stroke'] = null;
       point['hoverStroke'] = null;
-      result["data"].push(point)
+      point['value'] = (proportion[group][2] / dataPoint['risks'] / totalRisk).toFixed(2);
+      point['amount'] = Math.floor(point['value'] / point['price']);
+      point['percent'] = (point['value'] * 100 / the_sum).toFixed(2);
+      result["data"].push(point);
     }
   }
+
   return result
 }
 
@@ -263,6 +276,8 @@ anychart.onDocumentReady(function () {
 
   var timeLineChange = function () {
     forecastData['length'] = timeLine.getValue();
+    $('.time-value').text('(' + timeLine.getValue() + ' years)');
+    if (timeLine.getValue() == 1) $('.time-value').text('(' + timeLine.getValue() + ' year)');
     updateForecastData(forecastData);
   };
   var timeLine = $('#timeLineSlider').slider().on('change', timeLineChange).data('slider');

@@ -47,6 +47,10 @@ h3.title {
     margin: 0 0 10px 0;
     text-align: center;
 }
+.time-value{
+    color: #a0a6ac;
+    font-size: 16px;
+}
 .relative{
     position: relative;
 }
