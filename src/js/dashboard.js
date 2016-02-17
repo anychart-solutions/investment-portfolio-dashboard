@@ -245,7 +245,7 @@ anychart.onDocumentReady(function () {
   var updateDonutData = function(data, stocks_amount, bonds_amount){
     var updateLabel = function (index) {
       donutData['chart'].label(index).text(
-          '<span style="font-size: 24px;">' + donutData['proportion'][index][0] + '</span><br/>' +
+          '<span style="font-size: 24px;">' + donutData['proportion'][index][0] * 10 + '%</span><br/>' +
           '<span style="font-size: 14px; font-weight: normal">' + donutData['proportion'][index][1].toUpperCase() + '</span>');
     };
     var updated_data = getDataInProportion(data, [[stocks_amount, "stocks"], [bonds_amount, "bonds"]]);
@@ -257,8 +257,8 @@ anychart.onDocumentReady(function () {
   };
 
   var proportionsChange = function () {
-    var stocks = parseInt($('#proportionsSlider .slider-track .max-slider-handle').attr('aria-valuemax')) +
-        proportionsResult.getValue();
+    var stocks = parseInt($('#proportionsSlider .slider-track .max-slider-handle').attr('aria-valuemax'))/10 +
+        proportionsResult.getValue()/10;
     var bonds = donutData['initial_data']['stocks'].length - stocks;
     if (proportionsResult.getValue() == 0) {
       stocks = donutData['initial_data']['stocks'].length/2;
