@@ -8,40 +8,40 @@
     <link rel="stylesheet" type="text/css" href="src/vendors/bootstrap-3/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="src/vendors/font-awesome-4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="src/css/prettify-tomorrow.css">
 </head>
 <body>
-<div class="row title-panel">
-    <div class="col-lg-12">
-        <h1 class="title">
-            <a class="navbar-brand" href="//anychart.com/">
-                <img src="src/i/AnyChart-light-empty.png" width="300" height="72" alt="AnyChart">
-                <div class="chart-row">
-                    <span class="chart-col green"></span>
-                    <span class="chart-col orange"></span>
-                    <span class="chart-col red"></span>
-                </div>
-            </a>
-            Investment Portfolio Dashboard
-            <span class="btn-group pull-right submenu">
-                <a type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i> </a>
-                <ul class="dropdown-menu">
-                    <li><a href="http://anychart.com/support/" target="_blank"><i class="fa fa-life-ring"></i>Support</a></li>
-                    <li><a href="https://github.com/AnyChart/investment-portfolio-dashboard/archive/master.zip"><i class="fa fa-download"></i> Download .zip</a></li>
-                    <li><a href="https://github.com/AnyChart/investment-portfolio-dashboard"><i class="fa fa-git"></i> GitHub Project</a></li>
-                </ul>
-            </span>
-        </h1>
-    </div>
-</div>
+
 <div class="container-fluid">
+    <div class="row title-panel">
+        <div class="col-lg-12">
+            <h1 class="title">
+                <a class="navbar-brand" href="//anychart.com/">
+                    <img src="src/i/AnyChart-light-empty.png" width="300" height="72" alt="AnyChart">
+                    <div class="chart-row">
+                        <span class="chart-col green"></span>
+                        <span class="chart-col orange"></span>
+                        <span class="chart-col red"></span>
+                    </div>
+                </a>
+                Creation Investment Portfolio Dashboard Process
+                <span class="btn-group pull-right submenu">
+                    <a type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i> </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://anychart.com/support/" target="_blank"><i class="fa fa-life-ring"></i>Support</a></li>
+                        <li><a href="https://github.com/AnyChart/investment-portfolio-dashboard/archive/master.zip"><i class="fa fa-download"></i> Download .zip</a></li>
+                        <li><a href="https://github.com/AnyChart/investment-portfolio-dashboard"><i class="fa fa-git"></i> GitHub Project</a></li>
+                    </ul>
+                </span>
+            </h1>
+        </div>
+    </div>
     <div class="article">
         <div class="row">
             <div class="col-sm-12">
-                <a class="btn btn-primary" href="index.html"> <i class="fa fa-arrow-circle-left"></i> Back to Dashboard</a>
+                <a class="btn btn-primary btn-back" href="index.html"> <i class="fa fa-arrow-circle-left"></i> Back to Dashboard</a>
             </div>
             <div class="col-sm-12">
-                <h1>Creation Investment Portfolio Dashboard Process</h1>
-
                 <ol class="content">
                     <li><a href="#overview">Overview</a></li>
                     <li><a href="#design">Design</a>
@@ -65,7 +65,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 id="overview">Overview</h2>
+                <h1 id="overview">Overview</h1>
 
                 <p> Дашборд делает для тех, кто строит решения по управлению персональным портфелем.
                     Дашборд строится в простом виде, для того, чтобы показать как можно использовать AnyChart для таких
@@ -73,9 +73,9 @@
                     Решение является расширяемым и в нем опущены некоторые математические этапы, для упрощения
                     примера.</p>
 
-                <h2 id="design">Design</h2>
+                <h1 id="design">Design</h1>
 
-                <h3 id="concept">Dashboard Concept</h3>
+                <h2 id="concept">Dashboard Concept</h2>
 
                 <p>Обычно процесс о управлению персональным портфелем состоит из трех основных шагов:</p>
                 <ul>
@@ -88,7 +88,7 @@
                     Для этого сделаем три вкладки, в каждой из которых будет отдельный дашборд, соответсвующий одному из
                     трех шагов.</p>
 
-                <h3 id="data_search">Choice of the Data</h3>
+                <h2 id="data_search">Choice of the Data</h2>
 
                 <p>Перед нами не стоит задачи сделать инструмент для формирования финансового портфеля, однако мы хотим,
                     чтобы наше решение можно было использовать на реальных финансовых данных. Поэтому возьмем несколько
@@ -163,13 +163,13 @@
 
                 </ul>
 
-                <h3 id="layout_draft">Forming of the Visual Presentation</h3>
+                <h2 id="layout_draft">Forming of the Visual Presentation</h2>
 
                 <p>Как было сказано раньше, мы хотим сделать три вкладки, в каждой из которых будет отдельный дашборд,
                     соответсвующий одному из трех шагов.
                     Рассмотрим подробнее, что мы хотим видеть на каждой из них.</p>
 
-                <h4>Вкладка первая. "Goals"</h4>
+                <h3>Вкладка первая. "Goals"</h3>
 
                 <p> Эта вкладка служит для того, чтобы помочь сформировать портфель. Совершенно очевидно, что
                     она должна содержать информацию о распределении фондов (инвестиционных инструментов), причем так,
@@ -191,7 +191,7 @@
                 <p> Итого, в первой вкладке, мы хотим видеть примерно такую картину:
                     <img src="src/i/about_pic_3.jpg">
 
-                </p><h4>Вкладка вторая. "Portfolio"</h4>
+                </p><h3>Вкладка вторая. "Portfolio"</h3>
 
                 <p> Эта вкладка служит для того, чтобы видеть наш портфель. Мы хотим видеть инвестиционные инструменты,
                     которые выбрали и их соотношение.
@@ -214,7 +214,7 @@
                 <p> Итого, во второй вкладке, мы хотим видеть примерно такую картину:
                     <img src="src/i/about_pic_6.jpg">
 
-                </p><h4>Третья вкладка. "Performance"</h4>
+                </p><h3>Третья вкладка. "Performance"</h3>
 
                 <p> Эта вкладка нужна для мониторинга роста нашего портфеля. Для этой цели используем Stock Chart.
                     <img src="src/i/about_pic_7.jpg">
@@ -233,9 +233,9 @@
 
                 </p>
 
-                <h2 id="implementation">Implementation</h2>
+                <h1 id="implementation">Implementation</h1>
 
-                <h3 id="converting_data">Convert Data</h3>
+                <h2 id="converting_data">Convert Data</h2>
 
                 <p> Прежде всего необходимо понять в каком формате мы сможем получить данные, как мы будем их хранить,
                     так, чтобы их можно было легко change to real data.
@@ -245,15 +245,272 @@
                     (данные о
                     <a href="http://finance.yahoo.com/q/hp?s=%5EGSPC+Historical+Prices">S&amp;P 500</a>,
                     <a href="http://finance.yahoo.com/q/hp?s=%5EIXIC+Historical+Prices">Nasdaq</a>,
-                    <a href="http://finance.yahoo.com/q/hp?s=%5EDJI+Historical+Prices">Dow</a>) будем хранить в .csv
-                    формате,
-                    поскольку именно в таком формате данные проще всего получить из сторонних источников.</p>
+                    <a href="http://finance.yahoo.com/q/hp?s=%5EDJI+Historical+Prices">Dow</a>) будем хранить в .json
+                    формате, поскольку формат является популярным и обычно ни у кого не возникает вопросы, как получить данне в этом формате.</p>
 
-                <p> Рассмотрим данные, необходимые для каждой вкладки нашего дашборда.
+                <p> Рассмотрим данные, необходимые для каждой вкладки нашего дашборда.</p>
 
-                </p><h4>Вкладка первая. "Goals"</h4>
-                <h4>Вкладка вторая. "Portfolio"</h4>
-                <h4>Третья вкладка. "Performance"</h4>
+                <h3>Вкладка первая. "Goals"</h3>
+                <p> Для этой вкладки для <strong>Donut Chart</strong>, нам понадобится перечень всех инструметтов,
+                    из которых мы могли бы составить портфель, выбрав пропорцию, используя ползунок соотношения Bonds и Stocks.
+                    Данные, которые мы скачали с <a href="http://finance.yahoo.com/">finance.yahoo.com</a>  для этого графика мы будем хранить в репозитории этого дашборда в папке /data,
+                    посмотреть их можно по ссылке: <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/StocksViaBonds.json">StocksViaBonds.json</a>.
+                <p> Для того чтобы построить <strong>Line Chart</strong>, прогнозирующий стоимость нашего дашборда на выбранное количество
+                    лет вперед, мы используем coefficient, указанный в
+                    <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/StocksViaBonds.json">StocksViaBonds.json</a>
+                    и будем рассчитывать, в зависимости от выбранной пропорции примерную стоимость нашего портфеля,
+                    поэтому для этой вкладки нам никакие другие данные не понадобятся.
+
+                <h3>Вкладка вторая. "Portfolio"</h3>
+                    <p> Для этой вкладки нам не понадобятся никаких дополнительных данных, эта вкладка,
+                        как бы суммирует и показывает полее подробно содержимое выбранного на первой вкладке портфеля.
+                    <p> Мы просто используем <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/StocksViaBonds.json">StocksViaBonds.json</a>
+                        чтобы посчитать все интересующие нас цифры со второй вкладки.
+                <h3>Третья вкладка. "Performance"</h3>
+                    <p> Для того, чтобы построить <b>Stock Chart</b> нам понадобится довольно много данных.
+                        Для основной линии нужно посчитать столько стоил наш портфель в прошлом,
+                        для этого необходимо получить данные за интересующий нас переод в прошлом о стоимости кажного используемого в портфеле инструмента,
+                        просуммировать их в той пропорции, в которой мы их купили сегодня (выбрав пропорцию на первой вкладке)
+                        и мы получим информацию о том, как изменялась цена нашего портфеля в прошлом. Эти <a href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/historical.json">данные</a> мы также берем на <a href="http://finance.yahoo.com/">finance.yahoo.com</a> и храним на github.
+                    <p> Для того, чтобы понять, как наш портфель вел себя относительно других известных портфелей мы возьмем <a href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/financialQuotes.json">данные</a>
+                        о стоимости этих элементов в прошлом и расчитаем, сколько бы он стоил, если бы мы закупили их на ту же сумму в тот же день в прошлом, что и наш основной портфель.
+
+                <h3>Using .json</h3>
+                    <p> Для того, что использовать json данные, мы используем ajax request to get them first.
+                    <pre class="prettyprint">$.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/financialQuotes.json",
+function (parsed_data) {
+    ...
+});</pre>
+                <p> Дальше мы выполняем расчеты, которые нам нужны и используем эти данные в charts, using <span class="method">.data()</span> method.
+
+                <h2 id="layout_technology">Layout Technology</h2>
+                <p> Charting in this sample is done exclusively by <a target="_blank" href="http://cdn.anychart.com/">the
+                    latest version</a> of <a target="_blank" href="http://www.anychart.com/">AnyChart JavaScript Web
+                    Charting Framework</a>.
+                    <br><a target="_blank" href="http://docs.anychart.com/">AnyChart Users' Guide</a>
+                    <br><a target="_blank" href="http://api.anychart.com/">AnyChart JavaScript API Reference</a>
+                    <br>To create tabs, handle data and interactions the following tools are used:
+                </p>
+                <ul class="list-default">
+                    <li><a target="_blank" href="http://jquery.com/">Jquery 2.1.3</a></li>
+                    <li><a target="_blank" href="http://getbootstrap.com/getting-started/">Bootstrap 3</a></li>
+                    <li><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/get-started/">Font Awesome
+                        4.4.0</a></li>
+                    <li><a target="_blank" href="https://github.com/google/code-prettify">prettify.js</a> для сниппетов кода и тему для него <a href="https://github.com/chriskempson/tomorrow-theme">prettify-tomorrow.css</a></li>
+                    <li><a target="_blank" href="http://seiyria.com/bootstrap-slider/">Slider for Bootstrap</a> для создания и работы с ползунками</li>
+
+                </ul>
+
+                <h2 id="creation">Creation Charts with AnyChart</h2>
+                <h3>"Goals" and "Portfolio" tabs</h3>
+                    <p> Поскольку Donut Chart - из второй вкладки - является Donut Chart из первой вкладки только без возможности редактирования, объеденим описание создание этих двух вкладок.
+                    <p> На первой вкладке необходимо создать два чарта.
+                        Поскольку данные для этих чартов могут менятся, при загрузке странице создадим оба чарта с
+                        нужными нам настройками и пустыми dataSets. Далее приведен пример кода создания Donut Chart, который возвращает нам объект собержащий сам <span class="method">chart</span>, для дальнейшего создания и изменения лейблов внутри,
+                        <span class="method">path</span> - который который нам будет нужен для создания красивого эффекта дуги вокруг Donut и <span class="method">dataset</span>, который мы будем использовать для изменения данных в chart.
+<pre class="prettyprint linenums:1">function drawDonutChart(container_id) {
+    var chart = anychart.pie();
+    chart.interactivity('single');
+    chart.legend(false);
+    chart.radius('40%');
+    chart.innerRadius('60%');
+    chart.padding(0);
+    chart.margin(0);
+    chart.explode(0);
+    chart.labels(false);
+    var dataset = anychart.data.set();
+    chart.data(dataset);
+    var stage = anychart.graphics.create(container_id);
+    chart.container(stage);
+    var path = stage.path().stroke(null).zIndex(10);
+    chart.draw();
+    return {'chart': chart, 'path': path, 'dataset': dataset};
+</pre>
+                <p> При изменении данных с помощью ползунков мы будем перезадовать данные для соответсвующего dataSet.
+                    Который мы получаем из предыдущей функции. приведем пример для Donut Chart,
+                    который меняет пропорции в зависимости от положения ползунка и меняет данные внутри лейблов.
+<pre class="prettyprint linenums:1">function updateDonutListeners(donutData, instrumentsTable){
+  var groupIndexes = [];
+  donutData['chart'].listen('pointshover', function (e) {
+        drawHoverArc(e.point, donutData['chart'], donutData['data'], donutData['path']);
+        groupIndexes = [];
+        var colorFill = '#ffa760';
+        if (donutData['data'][e.point.index]['group'] == 'bonds') colorFill = '#6fc0fe';
+        if ($('#table-container').is(':visible')) {
+          groupIndexes = [e.point.index];
+          highLightRowInTable(groupIndexes, instrumentsTable, colorFill + ' 0.3')
+        }
+      });
+  donutData['chart'].listen('mouseout', function (e) {
+        if ($('#table-container').is(':visible')) highLightRowInTable(groupIndexes, instrumentsTable, null);
+      });
+
+  function createChartLabel(index, anchor, groupName, groupColor) {
+    var label = donutData['chart'].label(index).useHtml(true);
+    label.position('center');
+    label.fontColor(groupColor);
+    label.anchor(anchor);
+    label.offsetY(-10);
+    label.offsetX(10);
+    label.hAlign('center');
+    label.listen('mouseOver', function () {
+      document.body.style.cursor = 'pointer';
+      groupIndexes = [];
+      for (i = 0; i < donutData['data'].length; i++){
+        if (donutData['data'][i]["group"] == groupName) groupIndexes.push(i)
+      }
+      if ($('#table-container').is(':visible')) highLightRowInTable(groupIndexes, instrumentsTable, groupColor + ' 0.3');
+
+      donutData['chart'].unhover();
+      donutData['chart'].hover(groupIndexes);
+      donutData['path'].clear();
+      for (var i = 0; i < groupIndexes.length; i++){
+        drawHoverArc(donutData['chart'].getPoint(groupIndexes[i]), donutData['chart'], donutData['data'], donutData['path'], true);
+      }
+    });
+    label.listen('mouseOut', function () {
+      document.body.style.cursor = '';
+      donutData['chart'].unhover();
+      donutData['path'].clear();
+      if ($('#table-container').is(':visible')) highLightRowInTable(groupIndexes, instrumentsTable, null);
+    });
+  }
+  createChartLabel(0, 'left', 'stocks', '#ffa760');
+  createChartLabel(1, 'right', 'bonds', '#6fc0fe');
+}</pre>
+<p> В данной функции <span class="method">donutData</span> - новые данные для Donut Chart, <span class="method">instrumentsTable</span> - нужен только для "Portfolio" tab, чтобы обеспечить подсветку соответствующих строк в таблице.
+<p class="alert alert-warning"> <strong>NOTICE:</strong> Обратите внимание, что при изменении данных в Pie Chart в зависимости от желаемой пропорции, мы не решаем задачу о рюкзаке, мы только иммитирует похожее распредение инструметов по портфелю. Эта иммитация реализована внутри функции <span>getDataInProportion()</span>, код которой здесь не приводится.
+<p> Создание и обновление данных для Line Chart из первой вкладки выполняю две функции:
+                <p><span class="method">drawForecastChart()</span>
+<pre class="prettyprint linenums:1">function drawForecastChart(container_id) {
+  var chart = anychart.area();
+  chart.tooltip().useHtml(true);
+  var lineDataset = anychart.data.set();
+  chart.spline(lineDataset).stroke('#64b5f6').tooltip()
+    .textFormatter(function(){
+      return 'Forecast: $' + this.value.toLocaleString();
+  });
+  var rangeDataset = anychart.data.set();
+  chart.rangeSplineArea(rangeDataset).fill('#64b5f6 0.3').highStroke(null).lowStroke(null).hoverMarkers(null).tooltip()
+    .textFormatter(function(){
+      return 'High: $' + this.high.toLocaleString() + 'Low: $' + this.low.toLocaleString();
+  });
+  chart.tooltip().displayMode('union');
+  chart.yAxis().labels().textFormatter(function(){return '$' + this.value.toLocaleString()});
+  chart.container(container_id);
+  chart.draw();
+  return {'chart': chart, 'lineDataset': lineDataset, 'rangeDataset': rangeDataset};
+}</pre>
+                <p><span class="method">updateForecastData()</span>
+<pre class="prettyprint linenums:1">function updateForecastData(forecastData){
+  var time_data = [];
+  var approximate_data = [];
+  var year = new Date().getFullYear();
+  for (var i = 0; i <= forecastData['length']; i++){
+    var item = 0;
+    for (var j = 0; j < forecastData['data'].length; j++){
+      item = item + forecastData['data'][j]['value'] * Math.pow((1 + forecastData['data'][j]['coefficient'] / 100), i);
+    }
+    time_data.push({x: year + i, value: item.toFixed(2)});
+    var shadow = i / 200;
+    approximate_data.push({x: year + i, low: item.toFixed(2) * (1 - shadow), high: item.toFixed(2) * (1 + shadow)});
+  }
+  if (forecastData['length'] > 0) forecastData['chart'].xScale().ticks().interval(1);
+  if (forecastData['length'] > 10) forecastData['chart'].xScale().ticks().interval(2);
+  if (forecastData['length'] >= 20) forecastData['chart'].xScale().ticks().interval(5);
+  forecastData['lineDataset'].data(time_data);
+  forecastData['rangeDataset'].data(approximate_data);
+}</pre>
+<p> Создание и обновление данных в таблице из второй вкладки выполняют две похожие функции:
+                <p><span class="method">drawTable()</span>
+<pre class="prettyprint linenums:1">function drawTable(container_id){
+  var table = anychart.ui.table();
+  table.container(container_id);
+  table.cellBorder(null);
+  table.cellBorder().bottom('1px #dedede');
+  table.fontSize(12).vAlign('middle').hAlign('left').fontColor('#212121');
+  table.contents([['Name', 'Ticker', 'Percent', 'Price', 'Amount', 'Total Sum']]);
+  table.getCol(0).fontSize(11);
+  table.getRow(0).cellBorder().bottom('2px #dedede').fontColor('#7c868e').height(50).fontSize(12);
+  table.getCol(1).width(60);
+  table.getCol(2).width(60);
+  table.getCol(3).width(75);
+  table.getCol(4).width(60);
+  table.getCol(5).width(90);
+  table.draw();
+  return table;
+}</pre>
+                <p><span class="method">updateTableData()</span>
+<pre class="prettyprint linenums:1">function updateTableData(table, data){
+  var contents = [
+    ['Name', 'Ticker', 'Percent', 'Price', 'Amount', 'Total Sum']
+  ];
+  for (var i = 0; i < data.length; i++){
+    contents.push([
+        data[i]['name'],
+        data[i]['ticker'],
+        data[i]['percent'] + '%',
+        '$' + parseFloat(data[i]['price']).toLocaleString(),
+        data[i]['amount'],
+        '$' + parseFloat(data[i]['value']).toLocaleString()
+    ]);
+  }
+  table.contents(contents);
+  table.draw();
+}
+</pre>
+                <h3>"Performance" tab</h3>
+                <p> За рисование и обновление данных в Stock Chart отвечают две соответствующие функции:
+<p><span class="method">drawStockChart()</span>
+<pre class="prettyprint linenums:1">function drawStockChart(container_id){
+  var stock = anychart.stock();
+  var plot = stock.plot();
+  plot.yAxis(1).orientation('right');
+  stock.padding(0, 80, 0, 80);
+  stock.container(container_id);
+
+  var mainTable = anychart.data.table('date');
+  var mainMapping = mainTable.mapAs({value: {column: 'value', type: 'close'}});
+  plot.line(mainMapping).name('Portfolio').stroke('2 #1976d2');
+
+  var SP500Table = anychart.data.table('date');
+  var SP500Mapping = SP500Table.mapAs({value: {column: 'value', type: 'close'}});
+  var SP500Series = plot.line(SP500Mapping).name('S&P 500').stroke('1 #ef6c00');
+
+  var DowTable = anychart.data.table('date');
+  var DowMapping = DowTable.mapAs({value: {column: 'value', type: 'close'}});
+  var DowSeries = plot.line(DowMapping).name('Dow').stroke('1 #ffa000');
+
+  var NasdaqTable = anychart.data.table('date');
+  var NasdaqMapping = NasdaqTable.mapAs({value: {column: 'value', type: 'close'}});
+  var NasdaqSeries = plot.line(NasdaqMapping).name('NASDAQ').stroke('1 #ffd54f');
+
+  stock.scroller().line(mainMapping);
+  stock.draw();
+  return {'stock': stock, 'mainTable': mainTable,
+    'SP500Table': SP500Table, 'DowTable': DowTable, 'NasdaqTable': NasdaqTable,
+    'SP500': SP500Series, 'Dow': DowSeries, 'NASDAQ': NasdaqSeries};
+}</pre>
+
+<p><span class="method">changeStockChart()</span>
+<pre class="prettyprint linenums:1">function changeStockChart(stockData){
+  stockData['mainTable'].remove();
+  var initial_sum = stockData['mainData'][stockData['mainData'].length - 1].value;
+  stockData['mainTable'].addData(stockData['mainData']);
+  stockData['SP500Table'].addData(calculateIndexPrices(stockData['indexesData']['S&P 500'], initial_sum));
+  stockData['DowTable'].addData(calculateIndexPrices(stockData['indexesData']['Dow'], initial_sum));
+  stockData['NasdaqTable'].addData(calculateIndexPrices(stockData['indexesData']['NASDAQ'], initial_sum));
+}</pre>
+                <p> В некоторых приведенных выше функциях можно заменить использование вспомогательных функции для перерасчета данных, или для создания особенно сложных эффектов. Мы не будем приводить и рассматривать здесь использование этих helper functions,
+                    поскольку они не добавляют понимания общей картины и при желании всегда можно открыть исходный код и разобраться во всех этих делалях.
+
+                <h2 id="enjoying">Enjoying the Results</h2>
+                <p> Мы описали процесс создания инвестмент-дашборда, содержащего три вкладки "Goals", "Portfolio" и "Performance", надеемся вы найдете этот пример и эту статью полезной и интересной.
+                <p> Live version you can see by link <a href="index.html"> Back to Dashboard</a>.
+
+                <h1 id="licence">Licence</h1>
+                <p> Scripts source code and data sets are licensed under <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>, AnyChart, Bootstrap, JQuery and Font Awesome have their own respective licenses, be aware of them when deploying your variations of the sample or using these libraries in your projects.</p>
+                <p> Feel free to contribute or fork this Sales Dashboard Sample on <a href="https://github.com/AnyChart/investment-portfolio-dashboard">GitHub</a>.
             </div>
         </div>
         <div class="row footer-panel">
@@ -266,5 +523,11 @@
 </div>
 <script src="src/vendors/jquery/jquery-2.1.3.min.js"></script>
 <script src="src/vendors/bootstrap-3/bootstrap.min.js"></script>
+<script src="src/vendors/prettify.js"></script>
+<script>
+    $(function () {
+        prettyPrint();
+    });
+</script>
 </body>
 </html>

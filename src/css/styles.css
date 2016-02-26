@@ -144,26 +144,55 @@ h3.title {
 }
 
 .article {
-    margin: 10px auto 0;
+    margin: 100px auto 0;
     max-width: 1120px;
     color: #333;
     padding: 0 0 0 30px;
 }
 
+.article .btn-back{
+    margin-left: -20px;
+    border: 1px solid #1f74b6;
+    background: #2485d0;
+}
+.article .btn-back:hover{
+    -webkit-box-shadow: 3px 3px 3px -1px rgba(124, 134, 142, 0.4);
+    -moz-box-shadow: 3px 3px 3px -1px rgba(124, 134, 142, 0.4);
+    box-shadow: 3px 3px 3px -1px rgba(124, 134, 142, 0.4);
+    background: #1f74b6;
+}
+
 .article h1, .article h2, .article h3, .article h4, .article h5 {
     color: #666;
     margin-left: -20px;
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 10px;
 }
-
+.article h2{
+    color: #929292
+}
+.article h3{
+    color: #212121;
+    font-size: 20px;
+}
+.article h4{
+    color: #666;
+    font-size: 20px;
+}
+.article .method{
+    font-weight: bold;
+    font-family: "Courier New", courier, monospace;
+}
 .article img {
     margin: 10px auto 10px;
     display: block;
-    max-height: 450px;
+    max-height: 350px;
     max-width: 90%;
 }
 
+ol.content {
+    margin-top: 20px;
+}
 ol.content ul {
     margin-left: 0;
     list-style: disc;
