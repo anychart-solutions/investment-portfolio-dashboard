@@ -24,7 +24,7 @@
                         <span class="chart-col red"></span>
                     </div>
                 </a>
-                Creation Investment Portfolio Dashboard Process
+                Creating Investment Portfolio Dashboard
                 <span class="btn-group pull-right submenu">
                     <a type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i> </a>
                     <ul class="dropdown-menu">
@@ -47,15 +47,15 @@
                     <li><a href="#design">Design</a>
                         <ul>
                             <li><a href="#concept">Dashboard Concept</a></li>
-                            <li><a href="#data_search">Choice of the Data </a></li>
-                            <li><a href="#layout_draft">Forming of the Visual Presentation</a></li>
+                            <li><a href="#data_search">Data </a></li>
+                            <li><a href="#layout_draft">Visual Presentation</a></li>
                         </ul>
                     </li>
                     <li><a href="#implementation">Implementation</a>
                         <ul>
-                            <li><a href="#converting_data">Convert Data</a></li>
-                            <li><a href="#layout_technology">Layout Technology Stack</a></li>
-                            <li><a href="#creation">Creation Charts with AnyChart</a></li>
+                            <li><a href="#converting_data">Converting Data</a></li>
+                            <li><a href="#layout_technology">Layout</a></li>
+                            <li><a href="#creation">Creating Charts with AnyChart</a></li>
                             <li><a href="#enjoying">Enjoying the Result</a></li>
                         </ul>
                     </li>
@@ -67,49 +67,57 @@
             <div class="col-sm-12">
                 <h1 id="overview">Overview</h1>
 
-                <p> Dashboard делает для тех, кто строит решения по управлению персональным портфелем.
-                    Дашборд строится в простом виде, для того, чтобы показать как можно использовать AnyChart для таких
-                    решений.
-                    Решение является расширяемым и в нем опущены некоторые математические этапы, для упрощения
-                    примера.</p>
+                <p> This dashboard creation tutorial is inteneded to show anyone who is interested in
+                    creating solutions for personal portfolio management how AnyChart Charting solution can
+                    help.
+                    This dashboard is a basic one but it is extendable. Some things are omitted for the sake of clarity.</p>
 
                 <h1 id="design">Design</h1>
 
                 <h2 id="concept">Dashboard Concept</h2>
 
-                <p>Обычно процесс о управлению персональным портфелем состоит из трех основных шагов:</p>
+                <p>Some say portfolio management is the art and science, which consists of making decisions about investment
+                content combination and policy, matching investments to objectives, asset allocation for individuals and
+                institutions, and balancing risk against performance. </p>
+                
+                <p>If you want to be perfectly accurate, investment management is the professional asset management of various securities
+                (shares, bonds and other securities) and other assets (e.g., real estate) in order to meet specified
+                investment goals for the benefit of the investors. Investors may be institutions (insurance companies,
+                pension funds, corporations, charities, educational establishments etc.) or private investors (both directly
+                via investment contracts and more commonly via collective investment schemes e.g. mutual funds or
+                exchange-traded funds).</p>
+                
+                <p>Or, in plain English, managing investment porfolio is creationg a collections of assets that can diminish 
+                the risk inherent in stock markets by diversification or avoiding having too many eggs in one basket.</p>
+                
+                <p>Whatever the case is, any porfolio management must include the following steps:</p>
+                
                 <ul>
-                    <li>Определение инвестиционных целей и горизонтов (goals)</li>
-                    <li>Формирование портфеля (portfolio)</li>
-                    <li>Мониторинг перфоманса (performance)</li>
+                    <li>Choosing investment horizon and goals</li>
+                    <li>Builiding portfolio</li>
+                    <li>Performance monitoring</li>
                 </ul>
-                <p>Соотвественно в нашем решении мы хотим на самом деле получить три дашборда для каждого из этих
-                    этапов.
-                    Для этого сделаем три вкладки, в каждой из которых будет отдельный дашборд, соответсвующий одному из
-                    трех шагов.</p>
+                <p>Each of the steps needs a dashboard of its' own, so we will create a dashboard for
+                each step and put them in separate tabs.</p>
 
-                <h2 id="data_search">Choice of the Data</h2>
+                <h2 id="data_search">Data</h2>
 
-                <p>Перед нами не стоит задачи сделать инструмент для формирования финансового портфеля, однако мы хотим,
-                    чтобы наше решение можно было использовать на реальных финансовых данных. Поэтому возьмем несколько
-                    популярных инвестиционных инструментов и попробуем получить о них данные за прошлый год
-                    на <a href="http://finance.yahoo.com/">finance.yahoo.com</a></p>
+                <p>We are not actually creating an investment porfolio solution - merely a sample, but
+                    we want this sample to be easily portable into the real world. So, we will take 
+                    several popular instruments and obtain data on them from  <a href="http://finance.yahoo.com/">finance.yahoo.com</a></p>
 
-                <p> Наш портфель будет наполнен на сколько процентов by Stocks, на сколько-то by Bonds, примем, что 100%
-                    нашего портфеля - это 10 инструментов.
-                    Поэтому в исходных данных мы возьмем 10 Stocks и 10 Bonds, для того, чтобы портфель из 10
-                    инструментов мы могли наполнить в разной пропорции with Stocks and Bonds.
+                <p> We will create Stocks/Bonds porfolio with 10 instruments maximum.
+                    We will obtain data on 10 Stocks and 10 Bonds instruments to choose from,
+                    so we could create any Stocks/Bonds mix with a full count of ten.
                 </p>
 
-                <p> Найдем 20 популярных инструментов на <a href="http://finance.yahoo.com/">finance.yahoo.com</a>, 10
-                    Stocks и 10 Bonds и Historical Prices for them,
-                    by comparing prices a year ago and current one we will get the investment returns index, so we can
+                <p> From <a href="http://finance.yahoo.com/">finance.yahoo.com</a> we obtains 10
+                    Stocks и 10 Bonds instruments, along with historical prices for them.
+                    By comparing prices a year ago and current one we will get the investment returns index, so we can
                     build a prognosis.
-
                 </p>
 
-                <p> Вот наш выбор (он не отвечает требованиям ни одной известной нам финансовой задачи,
-                    он только позволяет нам получить пример данных для нашего дашборда).
+                <p> Here is a selection, it has nothing to do with any real world goal and created solely for the demostration purposes:
                 </p>
                 <ul class="list-unstyled">
                     <li> Stocks
@@ -163,79 +171,77 @@
 
                 </ul>
 
-                <h2 id="layout_draft">Forming of the Visual Presentation</h2>
+                <h2 id="layout_draft">Visual Presentation</h2>
 
-                <p>Как было сказано раньше, мы хотим сделать три вкладки, в каждой из которых будет отдельный дашборд,
-                    соответсвующий одному из трех шагов.
-                    Рассмотрим подробнее, что мы хотим видеть на каждой из них.</p>
+                <p>As we've said earlier, we want to create 3 tabs with a dashboard for each step in each them.
+                Usually to choose the best layout for dashboard you should simply draw it by hand - to do a "paper design",
+                you may do that in your favorite graphics editor or literarly by hand. That's what we will go through 
+                with each of the steps.</p>
 
-                <h3>Вкладка первая. "Goals"</h3>
+                <h3>Goals Tab</h3>
 
-                <p> Эта вкладка служит для того, чтобы помочь сформировать портфель. Совершенно очевидно, что
-                    она должна содержать информацию о распределении фондов (инвестиционных инструментов), причем так,
-                    чтобы могли менять Allocation of Stocks an Bonds.
-                    Довольно привычным кажется в данном случае представление информации в виде Donut Chart.
+                <p> This tab will provide a user a way to mix the porfolio, it must allow to 
+                    allocate certain amount of Stocks an Bonds and show this allocation in a comprehensible way.
+                    Donut Chart with labels in the center of it, and a slider to change the ratio seem to be just what we need:
                     <img src="src/i/about_pic_1.jpg">
                 </p>
 
-                <p> Так же мы хотим видет в этой вкладке прогноз роста нашего портфеля, в зависимости от выбранного
-                    соотношения фондов (инвестиционных инструментов).
-                    Прогноз нас может интересовать как в краткосрочной (1 год), так и в долгосрочной перспертиве (до 50
-                    лет), поэтому нам так же понадобится инструмент
-                    для смены продолжительности прогнозируемого периода. Мы используем line chart чтобы показать прогноз
-                    и дополним его range area, чтобы показать
-                    возможные вариации прогноза.
+                <p> Also, we want to see prognosis for the the porfolio, which changes depending on the content of the
+                porfolio and may be different for different time periods (investment horizon).
+                    Line chart is perfect to show the trend, Range area chart - to show possible variations area, and 
+                    a slider again - to choose the period:
                     <img src="src/i/about_pic_2.jpg">
                 </p>
 
-                <p> Итого, в первой вкладке, мы хотим видеть примерно такую картину:
+                <p>So, the first tab must look something like that:
                     <img src="src/i/about_pic_3.jpg">
 
-                </p><h3>Вкладка вторая. "Portfolio"</h3>
+                </p>
+                
+                <h3>Portfolio Tab</h3>
 
-                <p> Эта вкладка служит для того, чтобы видеть наш портфель. Мы хотим видеть инвестиционные инструменты,
-                    которые выбрали и их соотношение.
-                    Для того, чтобы показать их соотношение, используем Donut Chart, как и в первом случае, но в этой
-                    вкладке, мы уже не можем влиять на соотношение фондов в нашем портфеле.
+                <p>Portfolio Tab will be used to show the porfolio in details: the mix of the instruments 
+                and all basic information about them.
+                The mix will be shown as the Doughnut Chart, just as in Goals tab, but there is no slider
+                - chart is static here.
                     <img src="src/i/about_pic_4.jpg">
                 </p>
 
-                <p> Так же мы хотим видеть более подробную информацию о каждом выбранном нами инвестиционном
-                    инструменте, такую как:
-                    полное название,
-                    ticker (сокращенное название),
-                    percent of portfolio (процент в нашем портфеле),
-                    amount (количество купленных),
-                    price per one (стоимость одной),
-                    sum in dollars (сколько мы всего на них потратили) и для этого используем таблицу.
+                <p>Also, we want to see the basic information about each of the instruments, such as:
+                    Full name, Ticker (stock symbol is an abbreviation used to uniquely identify publicly traded shares 
+                    of a particular stock on a particular stock market),
+                    Percent of portfolio, Amount (bought), Price per one,
+                    sum in dollars (spent). Such data will look perfect in a table: 
                     <img src="src/i/about_pic_5.jpg">
                 </p>
 
-                <p> Итого, во второй вкладке, мы хотим видеть примерно такую картину:
+                <p>So, our Porfolio tab comes to this:
                     <img src="src/i/about_pic_6.jpg">
 
-                </p><h3>Третья вкладка. "Performance"</h3>
+                </p>
+                
+                <h3>Performance Tab</h3>
 
-                <p> Эта вкладка нужна для мониторинга роста нашего портфеля. Для этой цели используем Stock Chart.
+                <p>Performance tab, as name implies, shows the performance of our investment porfolio,
+                which we will show using so called Stock Chart, a variation of date time based line chart with 
+                advanced scroller capabilites:
                     <img src="src/i/about_pic_7.jpg">
                 </p>
 
-                <p> Возьмем также с <a href="http://finance.yahoo.com/">finance.yahoo.com</a> информацию о нескольких
-                    известных портфелях
-                    (<a href="http://finance.yahoo.com/q/hp?s=%5EGSPC+Historical+Prices">S&amp;P 500</a>,
+                <p>The best way to measure performance is to compare it with the markets,
+                so we will obtain data about <a href="http://finance.yahoo.com/q/hp?s=%5EGSPC+Historical+Prices">S&amp;P 500</a>,
                     <a href="http://finance.yahoo.com/q/hp?s=%5EIXIC+Historical+Prices">Nasdaq</a>,
-                    <a href="http://finance.yahoo.com/q/hp?s=%5EDJI+Historical+Prices">Dow</a>) и добавим возможность
-                    сравнить рост нашего портфеля с ними.
+                    <a href="http://finance.yahoo.com/q/hp?s=%5EDJI+Historical+Prices">Dow</a> performance
+                    and add an ability to compare how our portfolio perform in comparison with them.
                 </p>
 
-                <p> Итого, во второй вкладке, мы хотим видеть примерно такую картину:
+                <p>Performance tab must look something like this:
                     <img src="src/i/about_pic_8.jpg">
-
                 </p>
 
                 <h1 id="implementation">Implementation</h1>
 
-                <h2 id="converting_data">Convert Data</h2>
+                <h2 id="converting_data">Converting Data</h2>
 
                 <p> Прежде всего необходимо понять в каком формате мы сможем получить данные, как мы будем их хранить,
                     так, чтобы их можно было легко change to real data.
