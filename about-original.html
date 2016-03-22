@@ -293,13 +293,14 @@ function (parsed_data) {
                 <h2 id="creation">Creating Charts with AnyChart</h2>
                 <h3>Goals tab</h3>
                 
-                <p>Во вкладке "Цели" необходимо создать два графика. Поскольку их данные могут меняться, при загрузке 
-                страницы создадим оба графика с нужными нам настройками и пустыми данными.</p>
+                <p>We need two charts in the Goals tab. Data can be changed using sliders, 
+                so at first we create two charts with all settings and no data.</p>
 
-                <p>Функция <span class="method">drawDonutChart</span>, приведенная ниже, создает круговую диаграмму со всеми необходимыми настройками 
-                и пустыми данными. Она возвращает объект, содержащий экземпляр графика (<span class="method">chart</span>), ссылку на объект <span class="method">path</span>, 
-                который который нам будет нужен для создания красивого эффекта дуги вокруг диаграммы, и ссылку на объект
-                <span class="method">dataset</span>, с помощью которого мы будем задавать данные.</p>
+                <p><span class="method">drawDonutChart</span> function creates a Donut chart and
+                defines all settings. It returns an object with (<span class="method">chart</span>)
+                instance, a link to <span class="method">path</span> object  
+                (used to create an arc effectarund slices of the chart) and a link to
+                <span class="method">dataset</span> object, the latter is used to set data to a chart.</p>
              
 <pre class="prettyprint linenums:1">function drawDonutChart(container_id) {
     var chart = anychart.pie();
@@ -319,8 +320,8 @@ function (parsed_data) {
     chart.draw();
     return {'chart': chart, 'path': path, 'dataset': dataset};
 </pre>
-                <p>Когда пользователь изменяет положение ползунков, нужно изменить dataset соответствующего графика.</p>
-                <p>Ниже приведен код для круговой диаграммы:</p>
+                <p>When user changes sliderd - we change data in a chart.</p>
+                <p>Here is a code for Donut chart:</p>
                     
 <pre class="prettyprint linenums:1">function updateDonutListeners(donutData, instrumentsTable){
   var groupIndexes = [];
@@ -371,10 +372,20 @@ function (parsed_data) {
   createChartLabel(0, 'left', 'stocks', '#ffa760');
   createChartLabel(1, 'right', 'bonds', '#6fc0fe');
 }</pre>
-<p>В функции updateDonutListeners параметр donutData – это новые данные для диаграммы, а параметр instrumentsTable используется только во вкладке "Портфель", чтобы обеспечить подсветку соответствующих строк в таблице.</p>
-<p class="alert alert-warning"> <strong>NOTICE:</strong> При изменении данных в круговой диаграмме в зависимости от желаемого соотношения инструментов в портфеле мы не решаем "задачу о рюкзаке", а только имитируем такое распределение инструментов. Эта имитация реализована функцией getDataInProportion(), код которой здесь не приводится..</p>
-<p>Для построения линейного графика используются следующие две функции:</p>
-                <p><span class="method">drawForecastChart()</span>
+
+<p>In <span class="method">updateDonutListeners</span>, <span class="method">donutData</span>
+is a variable with the new data for a Donut chart, <span class="method">instrumentsTable</span>
+is used only in Portfolio tab to highlight rows of the rable.</p>
+
+<p class="alert alert-warning"><strong>NOTE:</strong> We do not actually solve 
+a <a target="_blank" href="https://en.wikipedia.org/wiki/Knapsack_problem">"Knapsack_problem"</a>
+when the mix of the instruments is changed, we just imitate the solution.
+The imitation is implemented in <span class="method">getDataInProportion()</span>,
+function (not shown here, can be found in the source code).</p>
+
+<p>Two functions are used to create a line chart:</p>
+
+<p><span class="method">drawForecastChart()</span>
 <pre class="prettyprint linenums:1">function drawForecastChart(container_id) {
   var chart = anychart.area();
   chart.tooltip().useHtml(true);
@@ -414,8 +425,14 @@ function (parsed_data) {
   forecastData['lineDataset'].data(time_data);
   forecastData['rangeDataset'].data(approximate_data);
 }</pre></p>
-<p> Создание и обновление данных в таблице из второй вкладки выполняют две похожие функции:
-                <p><span class="method">drawTable()</span>
+
+<h3>Porfolio Tab</h3>
+
+<p>In the Porfolio tab we create a Donut chart and a table with the detailed information.
+Donut chart is created using the same function as in Goals tab, 
+the table is created and updated using the following two functions:</p>
+
+<p><span class="method">drawTable()</span>
 <pre class="prettyprint linenums:1">function drawTable(container_id){
   var table = anychart.ui.table();
   table.container(container_id);
@@ -433,7 +450,8 @@ function (parsed_data) {
   table.draw();
   return table;
 }</pre>
-                <p><span class="method">updateTableData()</span>
+
+<p><span class="method">updateTableData()</span>
 <pre class="prettyprint linenums:1">function updateTableData(table, data){
   var contents = [
     ['Name', 'Ticker', 'Percent', 'Price', 'Amount', 'Total Sum']
@@ -451,9 +469,15 @@ function (parsed_data) {
   table.contents(contents);
   table.draw();
 }
-</pre>
-                <h3>Performance Tab</h3>
-                <p> За рисование и обновление данных в Stock Chart отвечают две соответствующие функции:
+</pre></p>
+
+<h3>Performance Tab</h3>
+
+<p>Functions below are used to create and update a chart in Peformance tab.
+ You can see that some extra functions are used there to recalculate data and more.
+ We don't show them here for they are not essential to the sample at all,
+ if you want to know how they work – please refer to the source code of the sample.</p>
+ 
 <p><span class="method">drawStockChart()</span>
 <pre class="prettyprint linenums:1">function drawStockChart(container_id){
   var stock = anychart.stock();
@@ -483,7 +507,7 @@ function (parsed_data) {
   return {'stock': stock, 'mainTable': mainTable,
     'SP500Table': SP500Table, 'DowTable': DowTable, 'NasdaqTable': NasdaqTable,
     'SP500': SP500Series, 'Dow': DowSeries, 'NASDAQ': NasdaqSeries};
-}</pre>
+}</pre></p>
 
 <p><span class="method">changeStockChart()</span>
 <pre class="prettyprint linenums:1">function changeStockChart(stockData){
@@ -493,12 +517,10 @@ function (parsed_data) {
   stockData['SP500Table'].addData(calculateIndexPrices(stockData['indexesData']['S&P 500'], initial_sum));
   stockData['DowTable'].addData(calculateIndexPrices(stockData['indexesData']['Dow'], initial_sum));
   stockData['NasdaqTable'].addData(calculateIndexPrices(stockData['indexesData']['NASDAQ'], initial_sum));
-}</pre>
-                <p> В некоторых приведенных выше функциях можно заменить использование вспомогательных функции для перерасчета данных, или для создания особенно сложных эффектов. Мы не будем приводить и рассматривать здесь использование этих helper functions,
-                    поскольку они не добавляют понимания общей картины и при желании всегда можно открыть исходный код и разобраться во всех этих делалях.
+}</pre></p>
+
 
                 <h2 id="enjoying">Enjoying the Results</h2>
-                <p> Мы описали процесс создания инвестмент-дашборда, содержащего три вкладки "Goals", "Portfolio" и "Performance", надеемся вы найдете этот пример и эту статью полезной и интересной.
                 <p>You can a live sample of this dashboard: <a href="index.html">Investment Porfolio Management Dashboard</a>.
 
                 <h1 id="licence">Licence</h1>
