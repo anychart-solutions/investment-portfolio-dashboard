@@ -3,7 +3,11 @@
 ## Investment Portfolio Dashboard
 Portfolio management is the art and science, which consists of making decisions about investment content combination and policy, matching investments to objectives, asset allocation for individuals and institutions, and balancing risk against performance. This dashboard shows how anyone who is interested in creating solutions for personal portfolio management can use AnyChart Charting solution and illustrate decision making process, as well as performance monitoring, visually appealing and self-explanatory.
 
-[<img src="http://static.anychart.com/images/github/investment-portfolio.png" alt="Investment Portfolio Dashboard | AnyChart">](http://anychart.com/solutions/investment-portfolio-dashboard/)
+[<img src="http://static.anychart.com/images/github/investment-portfolio_1.png" alt="Investment Portfolio Dashboard | AnyChart">](http://anychart.com/solutions/investment-portfolio-dashboard/)
+
+[<img src="http://static.anychart.com/images/github/investment-portfolio_2.png" alt="Investment Portfolio Dashboard | AnyChart">](http://anychart.com/solutions/investment-portfolio-dashboard/)
+
+[<img src="http://static.anychart.com/images/github/investment-portfolio_3.png" alt="Investment Portfolio Dashboard | AnyChart">](http://anychart.com/solutions/investment-portfolio-dashboard/)
 
 ## Further Learning
 * [Documentation](https://docs.anychart.com)
