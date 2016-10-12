@@ -9,7 +9,8 @@ Portfolio management is the art and science, which consists of making decisions 
 
 [<img src="http://static.anychart.com/images/github/investment-portfolio_3.png" alt="Investment Portfolio Dashboard | AnyChart">](http://anychart.com/solutions/investment-portfolio-dashboard/)
 
-## Further Learning
+## Links
+* [Investment Portfolio Dashboard at AnyChart.Com](https://www.anychart.com/solutions/investment-portfolio-dashboard/)
 * [Documentation](https://docs.anychart.com)
 * [JavaScript API Reference](https://api.anychart.com)
 * [Code Playground](https://playground.anychart.com)
