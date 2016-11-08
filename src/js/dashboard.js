@@ -112,7 +112,7 @@ function updateForecastData(forecastData){
 }
 
 function drawTable(container_id){
-  var table = anychart.ui.table();
+  var table = anychart.standalones.table();
   table.container(container_id);
   table.cellBorder(null);
   table.cellBorder().bottom('1px #dedede');
@@ -158,7 +158,9 @@ function drawStockChart(container_id){
   var stock = anychart.stock();
   var plot = stock.plot();
   plot.yAxis(1).orientation('right');
-  stock.padding(0, 80, 0, 80);
+  stock.padding().right(80);
+  stock.padding().bottom(20);
+
   stock.container(container_id);
 
   var mainTable = anychart.data.table('date');
@@ -178,7 +180,13 @@ function drawStockChart(container_id){
   var NasdaqSeries = plot.line(NasdaqMapping).name('NASDAQ').stroke('1 #ffd54f');
 
   stock.scroller().line(mainMapping);
+
+  var rangeSelector = anychart.ui.rangeSelector();
+
   stock.draw();
+
+  rangeSelector.render(stock);
+
   return {'stock': stock, 'mainTable': mainTable,
     'SP500Table': SP500Table, 'DowTable': DowTable, 'NasdaqTable': NasdaqTable,
     'SP500': SP500Series, 'Dow': DowSeries, 'NASDAQ': NasdaqSeries};
@@ -288,7 +296,7 @@ anychart.onDocumentReady(function () {
   instrumentsTable = drawTable('table-container');
   $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/financialQuotes.json", function (parsed_data) {
     stockData = drawStockChart('stock-container');
-    stockData['indexesData'] = parsed_data
+    stockData['indexesData'] = parsed_data;
   });
 
   $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/StocksViaBonds.json", function (parsed_data) {
@@ -302,6 +310,7 @@ anychart.onDocumentReady(function () {
       stockData['historical'] = parsed_data;
       stockData['mainData'] = calculateDataForStock(donutData['data'], parsed_data);
       changeStockChart(stockData);
+      stockData['stock'].selectRange("MTD");
     });
   });
 
