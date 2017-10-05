@@ -66,8 +66,8 @@ function updateDonutListeners(donutData, instrumentsTable){
       if ($('#table-container').is(':visible')) highLightRowInTable(groupIndexes, instrumentsTable, null);
     });
   }
-  createChartLabel(0, 'left', 'stocks', '#ffa760');
-  createChartLabel(1, 'right', 'bonds', '#6fc0fe');
+  createChartLabel(0, 'left-center', 'stocks', '#ffa760');
+  createChartLabel(1, 'right-center', 'bonds', '#6fc0fe');
 }
 
 function drawForecastChart(container_id) {
@@ -75,17 +75,22 @@ function drawForecastChart(container_id) {
   chart.tooltip().useHtml(true);
   var lineDataset = anychart.data.set();
   chart.spline(lineDataset).stroke('#64b5f6').tooltip()
-    .textFormatter(function(){
+    .format(function(){
       return '<span style="color: #d9d9d9">Forecast:</span> $' + this.value.toLocaleString();
   });
   var rangeDataset = anychart.data.set();
-  chart.rangeSplineArea(rangeDataset).fill('#64b5f6 0.3').highStroke(null).lowStroke(null).hoverMarkers(null).tooltip()
-    .textFormatter(function(){
-      return '<br/><span style="color: #d9d9d9">High:</span> $' + this.high.toLocaleString() +
-          '<br/><span style="color: #d9d9d9">Low:</span> $' + this.low.toLocaleString();
+  var series = chart.rangeSplineArea(rangeDataset);
+  series
+      .fill('#64b5f6 0.3')
+      .highStroke(null)
+      .lowStroke(null);
+  series.hovered().markers(null);
+  series.tooltip().format(function(){
+    return '<br/><span style="color: #d9d9d9">High:</span> $' + this.high.toLocaleString() +
+        '<br/><span style="color: #d9d9d9">Low:</span> $' + this.low.toLocaleString();
   });
   chart.tooltip().displayMode('union');
-  chart.yAxis().labels().textFormatter(function(){return '$' + this.value.toLocaleString()});
+  chart.yAxis().labels().format(function(){return '$' + this.value.toLocaleString()});
   chart.container(container_id);
   chart.draw();
   return {'chart': chart, 'lineDataset': lineDataset, 'rangeDataset': rangeDataset};
@@ -159,24 +164,24 @@ function drawStockChart(container_id){
   var plot = stock.plot();
   plot.yAxis(1).orientation('right');
   stock.padding().right(80);
-  stock.padding().bottom(20);
+  stock.padding().top(0);
 
   stock.container(container_id);
 
   var mainTable = anychart.data.table('date');
-  var mainMapping = mainTable.mapAs({value: {column: 'value', type: 'close'}});
+  var mainMapping = mainTable.mapAs({'value': {'column': 'value', 'type': 'close'}});
   plot.line(mainMapping).name('Portfolio').stroke('2 #1976d2');
 
   var SP500Table = anychart.data.table('date');
-  var SP500Mapping = SP500Table.mapAs({value: {column: 'value', type: 'close'}});
+  var SP500Mapping = SP500Table.mapAs({'value': {'column': 'value', 'type': 'close'}});
   var SP500Series = plot.line(SP500Mapping).name('S&P 500').stroke('1 #ef6c00');
 
   var DowTable = anychart.data.table('date');
-  var DowMapping = DowTable.mapAs({value: {column: 'value', type: 'close'}});
+  var DowMapping = DowTable.mapAs({'value': {'column': 'value', 'type': 'close'}});
   var DowSeries = plot.line(DowMapping).name('Dow').stroke('1 #ffa000');
 
   var NasdaqTable = anychart.data.table('date');
-  var NasdaqMapping = NasdaqTable.mapAs({value: {column: 'value', type: 'close'}});
+  var NasdaqMapping = NasdaqTable.mapAs({'value': {'column': 'value', 'type': 'close'}});
   var NasdaqSeries = plot.line(NasdaqMapping).name('NASDAQ').stroke('1 #ffd54f');
 
   stock.scroller().line(mainMapping);
@@ -233,10 +238,12 @@ function getDataInProportion(data, proportion){
       point['coefficient'] = dataPoint['coefficient'];
       point['ticker'] = dataPoint['ticker'];
       point['name'] = dataPoint['name'];
-      point['fill'] = group_palette.colorAt(proportion[group][0] - tickerIndex);
-      point['hoverFill'] = anychart.color.lighten(anychart.color.lighten(group_palette.colorAt(proportion[group][0] - tickerIndex)));
+      point['fill'] = group_palette.itemAt(proportion[group][0] - tickerIndex);
       point['stroke'] = null;
-      point['hoverStroke'] = null;
+      point['hovered'] = {
+        'fill': anychart.color.lighten(anychart.color.lighten(group_palette.itemAt(proportion[group][0] - tickerIndex))),
+        'stroke': null
+      };
       point['value'] = (proportion[group][2] / dataPoint['risks'] / totalRisk).toFixed(2);
       point['amount'] = Math.floor(point['value'] / point['price']);
       point['percent'] = (point['value'] * 100 / the_sum).toFixed(2);
@@ -294,19 +301,19 @@ anychart.onDocumentReady(function () {
   forecastData = drawForecastChart('forecast-chart-container');
   forecastData['length'] = timeLine.getValue();
   instrumentsTable = drawTable('table-container');
-  $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/financialQuotes.json", function (parsed_data) {
+  $.getJSON("https://raw.githubusercontent.com/anychart-solutions/investment-portfolio-dashboard/master/src/data/financialQuotes.json", function (parsed_data) {
     stockData = drawStockChart('stock-container');
     stockData['indexesData'] = parsed_data;
   });
 
-  $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/StocksViaBonds.json", function (parsed_data) {
+  $.getJSON("https://raw.githubusercontent.com/anychart-solutions/investment-portfolio-dashboard/master/src/data/StocksViaBonds.json", function (parsed_data) {
     donutData['initial_data'] = parsed_data;
     updateDonutListeners(donutData, instrumentsTable);
     updateDonutData(parsed_data, 5, 5);
     forecastData['data'] = donutData['data'];
     updateForecastData(forecastData);
     updateTableData(instrumentsTable, donutData['data']);
-    $.getJSON("https://raw.githubusercontent.com/AnyChart/investment-portfolio-dashboard/master/src/data/historical.json", function (parsed_data) {
+    $.getJSON("https://raw.githubusercontent.com/anychart-solutions/investment-portfolio-dashboard/master/src/data/historical.json", function (parsed_data) {
       stockData['historical'] = parsed_data;
       stockData['mainData'] = calculateDataForStock(donutData['data'], parsed_data);
       changeStockChart(stockData);
