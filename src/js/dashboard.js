@@ -72,6 +72,7 @@ function updateDonutListeners(donutData, instrumentsTable){
 
 function drawForecastChart(container_id) {
   var chart = anychart.area();
+  chart.padding(20);
   chart.tooltip().useHtml(true);
   var lineDataset = anychart.data.set();
   chart.spline(lineDataset).stroke('#64b5f6').tooltip()
