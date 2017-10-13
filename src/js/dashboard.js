@@ -164,8 +164,10 @@ function drawStockChart(container_id){
   var stock = anychart.stock();
   var plot = stock.plot();
   plot.yAxis(1).orientation('right');
-  stock.padding().right(80);
-  stock.padding().top(0);
+  stock.padding()
+      .top(0)
+      .right(80)
+      .left(70);
 
   stock.container(container_id);
 
