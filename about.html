@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>About Investment Portfolio Dashboard </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <meta property="og:title" content="Investment Portfolio Dashboard is a sample solution for personal portfolio management, created using AnyChart charting framework"/>
     <meta property="og:description" content="Our dashboard is minimalistic, but it can be easily extended, and it does not matter how much additional information you need to show: our charting framework is flexible enough to cope with any task."/>
     <meta property="og:image" content="src/i/screen.jpg"/>
@@ -84,19 +84,19 @@
                 <p>Some say portfolio management is the art and science, which consists of making decisions about investment
                 content combination and policy, matching investments to objectives, asset allocation for individuals and
                 institutions, and balancing risk against performance. </p>
-                
+
                 <p>If you want to be perfectly accurate, investment management is the professional asset management of various securities
                 (shares, bonds and other securities) and other assets (e.g., real estate) in order to meet specified
                 investment goals for the benefit of the investors. Investors may be institutions (insurance companies,
                 pension funds, corporations, charities, educational establishments etc.) or private investors (both directly
                 via investment contracts and more commonly via collective investment schemes e.g. mutual funds or
                 exchange-traded funds).</p>
-                
-                <p>Or, in plain English, managing investment porfolio is creationg a collections of assets that can diminish 
+
+                <p>Or, in plain English, managing investment porfolio is creationg a collections of assets that can diminish
                 the risk inherent in stock markets by diversification or avoiding having too many eggs in one basket.</p>
-                
+
                 <p>Whatever the case is, any porfolio management must include the following steps:</p>
-                
+
                 <ul>
                     <li>Choosing investment horizon and goals</li>
                     <li>Builiding portfolio</li>
@@ -108,7 +108,7 @@
                 <h2 id="data_search">Data</h2>
 
                 <p>We are not actually creating an investment porfolio solution - merely a sample, but
-                    we want this sample to be easily portable into the real world. So, we will take 
+                    we want this sample to be easily portable into the real world. So, we will take
                     several popular instruments and obtain data on them from  <a href="http://finance.yahoo.com/">finance.yahoo.com</a></p>
 
                 <p> We will create Stocks/Bonds porfolio with 10 instruments maximum.
@@ -180,57 +180,57 @@
 
                 <p>As we've said earlier, we want to create 3 tabs with a dashboard for each step in each them.
                 Usually to choose the best layout for dashboard you should simply draw it by hand - to do a "paper design",
-                you may do that in your favorite graphics editor or literarly by hand. That's what we will go through 
+                you may do that in your favorite graphics editor or literarly by hand. That's what we will go through
                 with each of the steps.</p>
 
                 <h3>Goals Tab</h3>
 
-                <p> This tab will provide a user a way to mix the porfolio, it must allow to 
+                <p> This tab will provide a user a way to mix the porfolio, it must allow to
                     allocate certain amount of Stocks an Bonds and show this allocation in a comprehensible way.
                     Donut Chart with labels in the center of it, and a slider to change the ratio seem to be just what we need:
-                    <img src="src/i/about_pic_1.jpg">
+                    <img src="src/i/about_pic_1.jpg" alt="Donut Chart with labels in the center of it, and a slider to change the ratio.">
                 </p>
 
                 <p> Also, we want to see prognosis for the the porfolio, which changes depending on the content of the
                 porfolio and may be different for different time periods (investment horizon).
-                    Line chart is perfect to show the trend, Range area chart - to show possible variations area, and 
+                    Line chart is perfect to show the trend, Range area chart - to show possible variations area, and
                     a slider again - to choose the period:
-                    <img src="src/i/about_pic_2.jpg">
+                    <img src="src/i/about_pic_2.jpg" alt="Line chart is perfect to show the trend, Range area chart - to show possible variations area">
                 </p>
 
                 <p>So, the first tab must look something like that:
-                    <img src="src/i/about_pic_3.jpg">
+                    <img src="src/i/about_pic_3.jpg" alt="First tab - Donut Chart, Line chart and Range area chart">
 
                 </p>
-                
+
                 <h3>Portfolio Tab</h3>
 
-                <p>Portfolio Tab will be used to show the porfolio in details: the mix of the instruments 
+                <p>Portfolio Tab will be used to show the porfolio in details: the mix of the instruments
                 and all basic information about them.
                 The mix will be shown as the Doughnut Chart, just as in Goals tab, but there is no slider
                 - chart is static here.
-                    <img src="src/i/about_pic_4.jpg">
+                    <img src="src/i/about_pic_4.jpg" alt="The mix will be shown as the Doughnut Chart, just as in Goals tab - chart is static here.">
                 </p>
 
                 <p>Also, we want to see the basic information about each of the instruments, such as:
-                    Full name, Ticker (stock symbol is an abbreviation used to uniquely identify publicly traded shares 
+                    Full name, Ticker (stock symbol is an abbreviation used to uniquely identify publicly traded shares
                     of a particular stock on a particular stock market),
                     Percent of portfolio, Amount (bought), Price per one,
-                    sum in dollars (spent). Such data will look perfect in a table: 
-                    <img src="src/i/about_pic_5.jpg">
+                    sum in dollars (spent). Such data will look perfect in a table:
+                    <img src="src/i/about_pic_5.jpg" alt="Such data will look perfect in a table">
                 </p>
 
                 <p>So, our Porfolio tab comes to this:
-                    <img src="src/i/about_pic_6.jpg">
+                    <img src="src/i/about_pic_6.jpg" alt="Porfolio tab - like this, pie-chart and table data">
 
                 </p>
-                
+
                 <h3>Performance Tab</h3>
 
                 <p>Performance tab, as name implies, shows the performance of our investment porfolio,
-                which we will show using so called Stock Chart, a variation of date time based line chart with 
+                which we will show using so called Stock Chart, a variation of date time based line chart with
                 advanced scroller capabilites:
-                    <img src="src/i/about_pic_7.jpg">
+                    <img src="src/i/about_pic_7.jpg" alt="Stock Chart, a variation of date time based line chart with advanced scroller capabilites">
                 </p>
 
                 <p>The best way to measure performance is to compare it with the markets,
@@ -241,32 +241,32 @@
                 </p>
 
                 <p>Performance tab must look something like this:
-                    <img src="src/i/about_pic_8.jpg">
+                    <img src="src/i/about_pic_8.jpg" alt="The best way to measure performance is to compare it with the markets">
                 </p>
 
                 <h1 id="implementation">Implementation</h1>
 
                 <h2 id="converting_data">Converting Data</h2>
 
-                <p>We will store data obtained from  <a href="http://finance.yahoo.com/">finance.yahoo.com</a> 
-                in JSON format, it is human-readable text to transmit data objects consisting of attribute–value pairs. 
+                <p>We will store data obtained from  <a href="http://finance.yahoo.com/">finance.yahoo.com</a>
+                in JSON format, it is human-readable text to transmit data objects consisting of attribute–value pairs.
                 It is the most common data format used for asynchronous browser/server communication and
                 can be easily produced with any DBMS and/or scripting language.</p>
-                
+
                 <p>Let's look closely at the date for each tab. All data will be stored in <span class="method">/data</span> folder
                 in <span class="method">.json</span> files.</p>
 
                 <h3>Goals Tab</h3>
-                
-                <p>To creata the Donut chart and the Line chart in this tab we need a list of all instruments and their attribute. 
+
+                <p>To creata the Donut chart and the Line chart in this tab we need a list of all instruments and their attribute.
                 Data from <a href="http://finance.yahoo.com/">finance.yahoo.com</a> is converted to JSON and stored in <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/StocksViaBonds.json">StocksViaBonds.json</a> file.</p>
 
                 <h3>Portfolio Tab</h3>
-                
+
                 <p>To show the Donut chart in the Portflio tab we also use data from <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/StocksViaBonds.json">StocksViaBonds.json</a> file.</p>
-                        
+
                 <h3>Performance Tab</h3>
-                
+
                 <p>To show performance  we need data on S&P 500, Nasdaq и Dow. This data is stored in <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/historical.json">historical.json</a>
                 and <a target="_blank" href="https://github.com/AnyChart/investment-portfolio-dashboard/blob/master/src/data/financialQuotes.json">financialQuotes.json</a> files.</p>
 
@@ -297,16 +297,16 @@ function (parsed_data) {
 
                 <h2 id="creation">Creating Charts with AnyChart</h2>
                 <h3>Goals tab</h3>
-                
-                <p>We need two charts in the Goals tab. Data can be changed using sliders, 
+
+                <p>We need two charts in the Goals tab. Data can be changed using sliders,
                 so at first we create two charts with all settings and no data.</p>
 
                 <p><span class="method">drawDonutChart</span> function creates a Donut chart and
                 defines all settings. It returns an object with (<span class="method">chart</span>)
-                instance, a link to <span class="method">path</span> object  
+                instance, a link to <span class="method">path</span> object
                 (used to create an arc effectarund slices of the chart) and a link to
                 <span class="method">dataset</span> object, the latter is used to set data to a chart.</p>
-             
+
 <pre class="prettyprint linenums:1">function drawDonutChart(container_id) {
     var chart = anychart.pie();
     chart.interactivity('single');
@@ -327,7 +327,7 @@ function (parsed_data) {
 </pre>
                 <p>When user changes sliderd - we change data in a chart.</p>
                 <p>Here is a code for Donut chart:</p>
-                    
+
 <pre class="prettyprint linenums:1">function updateDonutListeners(donutData, instrumentsTable){
   var groupIndexes = [];
   donutData['chart'].listen('pointshover', function (e) {
@@ -382,7 +382,7 @@ function (parsed_data) {
 is a variable with the new data for a Donut chart, <span class="method">instrumentsTable</span>
 is used only in Portfolio tab to highlight rows of the rable.</p>
 
-<p class="alert alert-warning"><strong>NOTE:</strong> We do not actually solve 
+<p class="alert alert-warning"><strong>NOTE:</strong> We do not actually solve
 a <a target="_blank" href="https://en.wikipedia.org/wiki/Knapsack_problem">"Knapsack_problem"</a>
 when the mix of the instruments is changed, we just imitate the solution.
 The imitation is implemented in <span class="method">getDataInProportion()</span>,
@@ -434,7 +434,7 @@ function (not shown here, can be found in the source code).</p>
 <h3>Porfolio Tab</h3>
 
 <p>In the Porfolio tab we create a Donut chart and a table with the detailed information.
-Donut chart is created using the same function as in Goals tab, 
+Donut chart is created using the same function as in Goals tab,
 the table is created and updated using the following two functions:</p>
 
 <p><span class="method">drawTable()</span>
@@ -482,7 +482,7 @@ the table is created and updated using the following two functions:</p>
  You can see that some extra functions are used there to recalculate data and more.
  We don't show them here for they are not essential to the sample at all,
  if you want to know how they work – please refer to the source code of the sample.</p>
- 
+
 <p><span class="method">drawStockChart()</span>
 <pre class="prettyprint linenums:1">function drawStockChart(container_id){
   var stock = anychart.stock();
